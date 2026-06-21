@@ -14,7 +14,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: "http://127.0.0.1:5500",
+    origin: ['http://localhost:5500','http://127.0.0.1:5500'],
     credentials: true,
   }),
 );
@@ -42,7 +42,7 @@ app.post('/get-id-token', async (req, res) => {
     // JWT token itself is formed by combining 3 parts <header>, <payload>, <signatue> 
     // 'google-auth-library' first fetch the Public Key corressponding to 'Kid' present in <header>
     // And this is how Library could able to verify id token even without clientId , clientSecret, clientSecret
-    
+
     let loginTicket = await client.verifyIdToken({
       idToken: id_token,
       audience: process.env.GOOGLE_CLIENT_ID // is this id_token intended for our application 
@@ -58,7 +58,7 @@ app.post('/get-id-token', async (req, res) => {
         maxAge: 1000 * 60 * 60 * 24,
         httpOnly: true,
         sameSite: 'None',
-        secure:true
+        secure: true
 
       });
       return res.status(200).json({ msg: 'sucess', isLogin: true })
@@ -73,7 +73,7 @@ app.post('/get-id-token', async (req, res) => {
         maxAge: 1000 * 60 * 60 * 24,
         httpOnly: true,
         sameSite: 'None',
-        secure:true
+        secure: true
 
       });
       return res.status(200).json({ msg: 'sucess', isLogin: true })
@@ -93,7 +93,7 @@ app.post('/get-id-token', async (req, res) => {
       maxAge: 1000 * 60 * 60 * 24,
       httpOnly: true,
       sameSite: 'None',
-      secure:true
+      secure: true
     });
     return res.status(200).json({ msg: 'sucess', isLogin: true })
 

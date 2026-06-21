@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- 1. Google ki library load karo -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  </head>
+
+  <body>
+    <!-- 2. Ek div jahan button dikhana hai -->
+    <div
+      id="g_id_onload"
+      data-client_id="475216737217-nv9trlpu0q8qliqnp29kbjne3iupulva.apps.googleusercontent.com"
+      data-context="signin"
+      data-ux_mode="popup"
+      data-callback="handleCredentialResponse"
+      data-auto_select="true"
+      data-close_on_tap_outside="false"
+      data-itp_support="false"
+      data-auto_prompt="false"
+    ></div>
+
+    <div
+      class="g_id_signin"
+      data-type="standard"
+      data-shape="pill"
+      data-theme="outline"
+      data-text="signin"
+      data-size="large"
+      data-logo_alignment="left"
+    ></div>
+
+    <script>
+      // 3. Login hone ke baad yeh function call hoga
+      function handleCredentialResponse(response) {
+        console.log(response);
+      }
+    </script>
+  </body>
+</html>

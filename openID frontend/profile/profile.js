@@ -3,7 +3,7 @@ let name = document.querySelector('.name')
 let email = document.querySelector('.email')
 let picture = document.querySelector('.picture')
 let logout = document.querySelector('.logout')
-let response = await fetch("http://127.0.0.1:3000/profile", {
+let response = await fetch("http://localhost:3000/profile", {
     method: "GET",
     credentials: "include",
 
@@ -21,7 +21,7 @@ else {
 
 
 logout.addEventListener('click', async (event) => {
-    let res = await fetch("http://127.0.0.1:3000/logout", {
+    let res = await fetch("http://localhost:3000/logout", {
         method: "post",
         credentials: "include",
     });

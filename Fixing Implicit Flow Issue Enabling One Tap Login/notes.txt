@@ -1,0 +1,27 @@
+/**
+ * REASON FOR MIGRATION:
+ * To fix the security vulnerabilities present in the 'Google Implicit Login' flow 
+ * implemented in the previous commit, we are migrating to Google's official GSI Library.
+ * 
+ * WHAT IS GSI?
+ * GSI stands for Google Identity Services. It is Google's modern, lightweight JavaScript 
+ * library that enables developers to integrate 'Sign In with Google' and 'One Tap' 
+ * prompts securely and seamlessly.
+ * 
+ * PREREQUISITES & SETUP:
+ * 1. Add your website's domain/URL to the 'Authorized JavaScript origins' in the Google Developer Console.
+ * 2. GSI can be configured in two ways: via HTML (Declarative) or JavaScript (Imperative).
+ * 3. Post-implementation, UI elements like popups, buttons, and prompts can be customized using official GSI documentation.
+ * 
+ * WHY IS GSI MORE SECURE? (The Core Mechanism)
+ * In the older Implicit Flow, the `id_token` was returned directly in the browser's URL fragment (hash). 
+ * This exposed the token to browser history, extensions, and server logs.
+ * 
+ * GSI fixes this by opening a secure popup/iframe that redirects to `gsi/iframe` or `gsi/transform`. 
+ * Once authentication is complete, Google delivers the 'credential' (JWT id_token) back to our main web page 
+ * securely via the browser's internal `window.postMessage()` API. Because the token never touches the URL, 
+ * it is completely protected from being exposed in the browser history. This is what makes GSI highly secure 
+ * and robust compared to legacy implementation.
+ */
+
+ 
